@@ -25,16 +25,16 @@ index 9cbe645..dd5b936 100644
 +	u16 val;
 +
 +	if (priv->eee_1000_disable || priv->eee_100_disable) {
-+		val = phy_read_mmd_indirect(phydev, MDIO_AN_EEE_ADV,
-+					    MDIO_MMD_AN);
++		val = phy_read_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV);
++
 +
 +		if (priv->eee_1000_disable)
 +			val &= ~MDIO_AN_EEE_ADV_1000T;
 +		if (priv->eee_100_disable)
 +			val &= ~MDIO_AN_EEE_ADV_100TX;
 +
-+		phy_write_mmd_indirect(phydev, MDIO_AN_EEE_ADV,
-+				       MDIO_MMD_AN, val);
++		phy_write_mmd(phydev, MDIO_MMD_AN,MDIO_AN_EEE_ADV, val);
++
 +	}
 +}
 +
